@@ -152,6 +152,7 @@ userSearchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
     const userName = document.getElementById("user-search-input");
     const userSearchList = document.getElementById("user-search-list");
+    userSearchList.innerHTML = '';
 
     if (!userName.value) {
         return;
