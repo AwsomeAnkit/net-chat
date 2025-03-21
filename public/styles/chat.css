@@ -16,9 +16,6 @@ nav{
     height: 60px;
 }
 
-.left,.center,.right{
-    flex: 1;
-}
 
 .left{
     text-align: left;
@@ -31,9 +28,28 @@ nav{
 }
 .center{
     text-align: center;
+    position: relative;
 }
+
 .right{
     text-align: right;
+}
+
+.user-search-list {
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    background-color: var(--background-color);
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.search-user-result {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    min-width: 15rem;
 }
 
 .emoji-picker {
@@ -44,8 +60,7 @@ nav{
 }
 
 .search-input{
-    width: 90%;
-    max-width: 300px;
+    min-width: 15rem;
     padding: 8px 10px;
     font-size: 1rem;
     border: none;
