@@ -20,9 +20,12 @@ $baseUrl = '/assets/';
         <div class="left">
             <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
-         <div class="center">
-            <input type="search" class="search-input" placeholder="Search....">
-        </div>
+        <form class="center" id="user-search-form">
+            <input type="search" class="search-input" id="user-search-input" placeholder="Search user by name or email">
+            <div id="user-search-list" class="user-search-list">
+                <!-- show search users -->
+            </div>
+        </form>
         <div class="right">
             <!-- Button trigger modal -->
             <button type="button" id="add-grp-btn" class="btn btn-light chat-tab" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

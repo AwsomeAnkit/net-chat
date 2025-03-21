@@ -21,6 +21,7 @@ const createGroupSearchUserInput = document.getElementById("search-user-input-gr
 const createGroupSearchUserBtn = document.getElementById("search-user-btn-group-create");
 const createGroupBtn = document.getElementById("create-group-btn");
 const createGroupCloseBtn = document.getElementById("create-group-close-btn");
+const userSearchForm = document.getElementById("user-search-form");
 
 menuUsername.textContent = userObj['fullname'];
 
@@ -137,7 +138,7 @@ createGroupCloseBtn.addEventListener("click", function () {
     createGroupMemberList = [];
     createGroupSearchUserInput.value = '';
 
-    userSearchResult.innerHTML = '';    
+    userSearchResult.innerHTML = '';
 })
 
 const emojiPicker = document.getElementById("emoji-picker");
@@ -147,19 +148,34 @@ emojiPickerBtn.addEventListener("click", function () {
     emojiPicker.style.display = "block";
 });
 
-userSearchForm.addEventListener("submit",async function (e) {
+userSearchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
     const userName = document.getElementById("user-search-input");
-    console.log("userName", userName.value);
+    const userSearchList = document.getElementById("user-search-list");
 
-    if(!userName.value){
+    if (!userName.value) {
         return;
     }
     const userSearchRespone = await fetch(`${url}/api/user/search?query=${userName.value}`);
 
-    if(userSearchRespone.ok){
+    if (userSearchRespone.ok) {
         const searchUserDataJson = await userSearchRespone.json();
-        console.log(searchUserDataJson);
+        const searchUserList = searchUserDataJson['data'];
+
+        searchUserList.forEach(user => {
+            userSearchList.insertAdjacentHTML("beforeend", `
+                <div id="search-user-${user['id']}" class="search-user-result">
+                    <img src="./assets/profile.png" alt="User Profile" height="25px" width="25px">
+                    <p>${user['fullname']}</p>
+                </div>
+            `);
+
+            document.getElementById(`search-user-${user['id']}`).addEventListener("click", function() {
+                createChat(user['id']);
+                searchUserList.innerHTML = '';
+                window.location.reload();
+            });
+        });
     }
 })
 
