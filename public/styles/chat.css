@@ -56,7 +56,11 @@ nav{
     display: none;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 3rem;
+}
+
+#emoji-picker-btn {
+    background-color: var(--background-color);
 }
 
 .search-input{

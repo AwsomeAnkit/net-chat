@@ -13,6 +13,8 @@ $baseUrl = '/assets/';
     <link rel="stylesheet" href="./styles/chat.css">
     <!-- include bootstrap styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- include boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body onload="getMyChats()">
@@ -108,7 +110,9 @@ $baseUrl = '/assets/';
             </div>
             <div class="text-message">
                 <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
-                <button id="emoji-picker-btn"></button>
+                <button id="emoji-picker-btn">
+                    <i class='bx bx-smile'></i>
+                </button>
                 <input id="chat-txt" type="text" placeholder="Enter text..." class="input-field">
                 <button id="chat-send-btn" class="submit-button">Send</button>
             </div>

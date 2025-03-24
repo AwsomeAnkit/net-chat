@@ -93,7 +93,6 @@ createGroupSearchUserBtn.addEventListener("click", async function () {
                     createGroupMemberList.push(searchResult['id']);
                     this.style.backgroundColor = '#E3F2FD';
                 }
-                console.log(createGroupMemberList);
             });
         });
     }
@@ -142,10 +141,20 @@ createGroupCloseBtn.addEventListener("click", function () {
 })
 
 const emojiPicker = document.getElementById("emoji-picker");
+emojiPicker.style.display = 'none';
 const emojiPickerBtn = document.getElementById("emoji-picker-btn");
 
 emojiPickerBtn.addEventListener("click", function () {
-    emojiPicker.style.display = "block";
+    const emojiPickerStyleDisplay = emojiPicker.style.getPropertyValue("display");
+    if (emojiPickerStyleDisplay === 'none') {
+        emojiPicker.style.display = "block";
+    } else {
+        emojiPicker.style.display = 'none';
+    }
+});
+
+emojiPicker.addEventListener('emoji-click', event => {
+    chatInput.value += event.detail.unicode;
 });
 
 userSearchForm.addEventListener("submit", async function (e) {
@@ -171,7 +180,7 @@ userSearchForm.addEventListener("submit", async function (e) {
                 </div>
             `);
 
-            document.getElementById(`search-user-${user['id']}`).addEventListener("click", function() {
+            document.getElementById(`search-user-${user['id']}`).addEventListener("click", function () {
                 createChat(user['id']);
                 searchUserList.innerHTML = '';
                 window.location.reload();
