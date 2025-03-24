@@ -21,6 +21,7 @@ const createGroupSearchUserInput = document.getElementById("search-user-input-gr
 const createGroupSearchUserBtn = document.getElementById("search-user-btn-group-create");
 const createGroupBtn = document.getElementById("create-group-btn");
 const createGroupCloseBtn = document.getElementById("create-group-close-btn");
+const userSearchForm = document.getElementById("user-search-form");
 
 menuUsername.textContent = userObj['fullname'];
 
@@ -92,7 +93,6 @@ createGroupSearchUserBtn.addEventListener("click", async function () {
                     createGroupMemberList.push(searchResult['id']);
                     this.style.backgroundColor = '#E3F2FD';
                 }
-                console.log(createGroupMemberList);
             });
         });
     }
@@ -137,29 +137,55 @@ createGroupCloseBtn.addEventListener("click", function () {
     createGroupMemberList = [];
     createGroupSearchUserInput.value = '';
 
-    userSearchResult.innerHTML = '';    
+    userSearchResult.innerHTML = '';
 })
 
 const emojiPicker = document.getElementById("emoji-picker");
+emojiPicker.style.display = 'none';
 const emojiPickerBtn = document.getElementById("emoji-picker-btn");
 
 emojiPickerBtn.addEventListener("click", function () {
-    emojiPicker.style.display = "block";
+    const emojiPickerStyleDisplay = emojiPicker.style.getPropertyValue("display");
+    if (emojiPickerStyleDisplay === 'none') {
+        emojiPicker.style.display = "block";
+    } else {
+        emojiPicker.style.display = 'none';
+    }
 });
 
-userSearchForm.addEventListener("submit",async function (e) {
+emojiPicker.addEventListener('emoji-click', event => {
+    chatInput.value += event.detail.unicode;
+});
+
+userSearchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
     const userName = document.getElementById("user-search-input");
-    console.log("userName", userName.value);
+    const userSearchList = document.getElementById("user-search-list");
+    userSearchList.innerHTML = '';
 
-    if(!userName.value){
+    if (!userName.value) {
         return;
     }
     const userSearchRespone = await fetch(`${url}/api/user/search?query=${userName.value}`);
 
-    if(userSearchRespone.ok){
+    if (userSearchRespone.ok) {
         const searchUserDataJson = await userSearchRespone.json();
-        console.log(searchUserDataJson);
+        const searchUserList = searchUserDataJson['data'];
+
+        searchUserList.forEach(user => {
+            userSearchList.insertAdjacentHTML("beforeend", `
+                <div id="search-user-${user['id']}" class="search-user-result">
+                    <img src="./assets/profile.png" alt="User Profile" height="25px" width="25px">
+                    <p>${user['fullname']}</p>
+                </div>
+            `);
+
+            document.getElementById(`search-user-${user['id']}`).addEventListener("click", function () {
+                createChat(user['id']);
+                searchUserList.innerHTML = '';
+                window.location.reload();
+            });
+        });
     }
 })
 

@@ -115,3 +115,13 @@ function notifyMessage(username, message) {
         });
     }
 }
+
+function createChat(receiverId) {
+    socket.send(JSON.stringify({
+        "event": "send-message",
+        "userId": userObj['id'],
+        "fullname": userObj['fullname'],
+        "receiverId": receiverId,
+        "message": `Hey`,
+    }));
+}
