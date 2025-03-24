@@ -86,7 +86,7 @@ $baseUrl = '/assets/';
         </div>
 
         <!-- display when chat not selected -->
-        <div id="nochats-container">
+        <div id="nochats-container" class="nochats-container">
             <p>Select a chat</p>
         </div>
 
@@ -97,7 +97,7 @@ $baseUrl = '/assets/';
                     <p id="chat-username">Username</p>
                 </div>
                 <div class="Add">
-                    <button type="button">Add Friend</button>
+                    <button type="button" class="btn-friend">Add Friend</button>
                 </div>
             </div>
             <div id="chat-box" class="chat-box">

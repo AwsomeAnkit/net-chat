@@ -151,8 +151,8 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(196,223,230);
-    background: linear-gradient(90deg, rgba(196,223,230,1) 35%, rgba(102,165,173,1) 100%);
+    background: rgba(255, 215, 0, 0.5);
+    background-color: #1C1C1E;
 }
 
 #chats-container {
@@ -199,7 +199,7 @@ nav{
     flex: 1;
     overflow-y: auto;
     background: rgb(196,223,230);
-    background: linear-gradient(90deg, rgba(196,223,230,1) 35%, rgba(102,165,173,1) 100%);
+    background-color: #2A2A2E;
 }
 
 .message-sent {
@@ -207,7 +207,7 @@ nav{
     margin: 10px;
     margin-left: auto;
     max-width: 75%;
-    background-color: var(--chat-bubble-sender);
+    background-color: #F8D210;
     padding: 8px;
     border-radius: 12px;
 }
@@ -217,9 +217,15 @@ nav{
     margin: 10px;
     margin-right: auto;
     max-width: 75%;
-    background-color: var(--chat-bubble-receiver);
+    background-color: #F8D210;
     padding: 8px;
     border-radius: 12px;
+}
+
+.btn-friend{
+    background-color: #FA26A0;
+    padding: 10px 25px 13px;
+    border-radius: 11px;
 }
 
 .text-message{
