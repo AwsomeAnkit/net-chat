@@ -20,7 +20,7 @@ $baseUrl = '/assets/';
 <body onload="getMyChats()">
     <nav>
         <div class="left">
-            <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
+            <img id="hover-gif" src="./assets/logo-epic-fun.png" alt="GIF" width="300px" height="80px">
         </div>
         <form class="center" id="user-search-form">
             <input type="search" class="search-input" id="user-search-input" placeholder="Search user by name or email">

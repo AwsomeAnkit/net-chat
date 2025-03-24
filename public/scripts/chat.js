@@ -1,5 +1,17 @@
 const userObj = JSON.parse(localStorage.getItem("user"));
 const url = `http://${window.location.host}`;
+const gif = document.getElementById("hover-gif");
+
+
+gif.addEventListener("mouseenter",() => {
+    gif.src = "./assets/logo-epic.gif";
+});
+
+gif.addEventListener("mouseleave",() => {
+    setTimeout(() => {
+        gif.src = "./assets/logo-epic-fun.png";
+    },2000)
+});
 
 let currentChatPartnerId = -1;
 let currentGroupId = -1;
