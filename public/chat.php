@@ -110,11 +110,14 @@ $baseUrl = '/assets/';
             </div>
             <div class="text-message">
                 <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
-                <button id="emoji-picker-btn">
-                    <i class='bx bx-smile'></i>
+                <button id="emoji-picker-btn">😀
+                    <!-- <i class='bx bx-smile'></i> -->
                 </button>
                 <input id="chat-txt" type="text" placeholder="Enter text..." class="input-field">
-                <button id="chat-send-btn" class="submit-button">Send</button>
+                <button id="chat-send-btn" class="submit-button">
+                    <span class="text">Send</span>
+                    <span class="plane">📩</span>
+                </button>
             </div>
         </div>
     </div>

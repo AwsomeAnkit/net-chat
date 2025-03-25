@@ -1,17 +1,9 @@
 const userObj = JSON.parse(localStorage.getItem("user"));
 const url = `http://${window.location.host}`;
 const gif = document.getElementById("hover-gif");
-
-
-gif.addEventListener("mouseenter",() => {
-    gif.src = "./assets/logo-epic.gif";
-});
-
-gif.addEventListener("mouseleave",() => {
-    setTimeout(() => {
-        gif.src = "./assets/logo-epic-fun.png";
-    },2000)
-});
+const emojiButton = document.getElementById("emoji-picker-btn");
+const sendButton = document.getElementById("chat-send-btn");
+const plane = document.querySelector(".plane");
 
 let currentChatPartnerId = -1;
 let currentGroupId = -1;
@@ -49,11 +41,11 @@ chatsTabBtn.addEventListener("click", function () {
     }
 
     currentChatTab = 0;
-
+    
     chatsProfileContainer.innerHTML = '';
     chatsTabBtn.style.backgroundColor = '#D3D3D3';
     groupsTabBtn.style.backgroundColor = '#F7F9FC';
-
+    
     getMyChats();
 });
 
@@ -63,24 +55,24 @@ groupsTabBtn.addEventListener("click", function () {
     }
 
     currentChatTab = 1;
-
+    
     chatsProfileContainer.innerHTML = '';
     groupsTabBtn.style.backgroundColor = '#D3D3D3';
     chatsTabBtn.style.backgroundColor = '#F7F9FC';
-
+    
     getMyGroups();
 });
 
 createGroupSearchUserBtn.addEventListener("click", async function () {
     const userSearchInput = createGroupSearchUserInput.value;
-
+    
     if (!userSearchInput) {
         return;
     }
 
     const userSearchResult = document.getElementById("create-group-results");
     userSearchResult.innerHTML = '';
-
+    
     const searchResponse = await fetch(`${url}/api/user/search?query=${userSearchInput}`);
 
     if (searchResponse.ok) {
@@ -90,14 +82,14 @@ createGroupSearchUserBtn.addEventListener("click", async function () {
         searchData.forEach(searchResult => {
             userSearchResult.insertAdjacentHTML("beforeend", `
                 <div id="user-result-${searchResult['id']}" class="create-group-result">
-                    <img src="./assets/profile.png" height="25px" width="25px">
-                    <p>${searchResult['fullname']}</p>
+                <img src="./assets/profile.png" height="25px" width="25px">
+                <p>${searchResult['fullname']}</p>
                 </div>
-            `);
-
-            document.getElementById(`user-result-${searchResult['id']}`).addEventListener("click", function () {
-                const userAlreadyAdded = createGroupMemberList.find(userId => userId === searchResult['id']);
-
+                `);
+                
+                document.getElementById(`user-result-${searchResult['id']}`).addEventListener("click", function () {
+                    const userAlreadyAdded = createGroupMemberList.find(userId => userId === searchResult['id']);
+                    
                 if (userAlreadyAdded) {
                     createGroupMemberList = createGroupMemberList.filter(id => id !== searchResult['id']);
                     this.style.backgroundColor = '#F7F9FC';
@@ -112,11 +104,11 @@ createGroupSearchUserBtn.addEventListener("click", async function () {
 
 createGroupBtn.addEventListener("click", async function () {
     const groupName = document.getElementById("input-group-name-create");
-
+    
     if (!groupName.value) {
         return;
     }
-
+    
     if (!createGroupMemberList.length) {
         return;
     }
@@ -134,7 +126,7 @@ createGroupBtn.addEventListener("click", async function () {
             members: createGroupMemberList,
         }),
     });
-
+    
     if (createGroupResponse.ok) {
         const createGroupJson = await createGroupResponse.json();
         console.log(createGroupJson);
@@ -143,12 +135,12 @@ createGroupBtn.addEventListener("click", async function () {
 
 createGroupCloseBtn.addEventListener("click", function () {
     // reset on modal close
-
+    
     const userSearchResult = document.getElementById("create-group-results");
-
+    
     createGroupMemberList = [];
     createGroupSearchUserInput.value = '';
-
+    
     userSearchResult.innerHTML = '';
 })
 
@@ -174,30 +166,30 @@ userSearchForm.addEventListener("submit", async function (e) {
     const userName = document.getElementById("user-search-input");
     const userSearchList = document.getElementById("user-search-list");
     userSearchList.innerHTML = '';
-
+    
     if (!userName.value) {
         return;
     }
     const userSearchRespone = await fetch(`${url}/api/user/search?query=${userName.value}`);
-
+    
     if (userSearchRespone.ok) {
         const searchUserDataJson = await userSearchRespone.json();
         const searchUserList = searchUserDataJson['data'];
-
+        
         searchUserList.forEach(user => {
             userSearchList.insertAdjacentHTML("beforeend", `
                 <div id="search-user-${user['id']}" class="search-user-result">
                     <img src="./assets/profile.png" alt="User Profile" height="25px" width="25px">
                     <p>${user['fullname']}</p>
-                </div>
-            `);
-
-            document.getElementById(`search-user-${user['id']}`).addEventListener("click", function () {
-                createChat(user['id']);
-                searchUserList.innerHTML = '';
-                window.location.reload();
-            });
-        });
+                    </div>
+                    `);
+                    
+                    document.getElementById(`search-user-${user['id']}`).addEventListener("click", function () {
+                        createChat(user['id']);
+                        searchUserList.innerHTML = '';
+                        window.location.reload();
+                    });
+                });
     }
 })
 
@@ -209,28 +201,28 @@ async function getMyChats() {
     const chatsResponse = await fetch(`${url}/api/my-chats?user_id=${userObj['id']}`, {
         method: 'GET',
     });
-
+    
     if (chatsResponse.ok) {
         const chats_data = await chatsResponse.json();
         const chats = chats_data['data'];
-
+        
         if (!chats.length) {
             chatPageContainer.style.display = "none";
             nochatContainer.style.display = "flex";
             return;
         }
-
+        
         chats.forEach((chatProfile) => {
             chatProfilesContainer.insertAdjacentHTML("beforeend", `
                 <div id="profile-${chatProfile['id']}" class="chat-profile">
-                    <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
-                    <p>${chatProfile['fullname']}</p>
+                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                <p>${chatProfile['fullname']}</p>
                 </div>
-            `);
-
-            document.getElementById(`profile-${chatProfile['id']}`).addEventListener("click", function () {
-                selectChat(chatProfile['id'], chatProfile['fullname'], chatProfile['email']);
-            });
+                `);
+                
+                document.getElementById(`profile-${chatProfile['id']}`).addEventListener("click", function () {
+                    selectChat(chatProfile['id'], chatProfile['fullname'], chatProfile['email']);
+                });
         });
     }
 }
@@ -239,87 +231,87 @@ async function getMyGroups() {
     const chatPageContainer = document.getElementById("chats-container");
     const chatProfilesContainer = document.getElementById("profiles-container");
     const nochatContainer = document.getElementById("nochats-container");
-
+    
     chatPageContainer.style.display = 'none';
     nochatContainer.style.display = 'flex';
-
+    
     const groupsResponse = await fetch(`${url}/api/clubs?user_id=${userObj['id']}`, {
         method: 'GET',
     });
-
+    
     if (groupsResponse.ok) {
         const groups_data = await groupsResponse.json();
         const groups = groups_data['data'];
-
+        
         groups.forEach((group) => {
             chatProfilesContainer.insertAdjacentHTML("beforeend", `
                 <div id="group-${group['club_id']}" class="chat-profile">
-                    <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
-                    <p>${group['club_name']}</p>
+                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                <p>${group['club_name']}</p>
                 </div>
-            `);
-
-            document.getElementById(`group-${group['club_id']}`).addEventListener("click", function () {
-                selectGroup(group['club_id'], group['club_name']);
-            });
+                `);
+                
+                document.getElementById(`group-${group['club_id']}`).addEventListener("click", function () {
+                    selectGroup(group['club_id'], group['club_name']);
+                });
         });
     }
 }
 
 async function selectChat(user_id, fullname, email) {
     currentChatPartnerId = user_id;
-
+    
     const nochat = document.getElementById("nochats-container");
     const chat = document.getElementById("chats-container");
-
+    
     const chatUsername = document.getElementById("chat-username");
     const chatBox = document.getElementById("chat-box");
-
+    
     chatBox.innerHTML = '';
-
+    
     nochat.style.display = "none";
     chat.style.display = "flex";
-
+    
     chatUsername.textContent = fullname;
-
+    
     const chatsResponse = await fetch(`${url}/api/chats?sender_id=${userObj['id']}&receiver_id=${user_id}`, {
         method: 'GET',
     });
-
+    
     if (chatsResponse.ok) {
         const chatsJson = await chatsResponse.json();
         const chats = chatsJson['data'];
-
+        
         chats.forEach(chat => {
             if (chat['sender_id'] === userObj['id']) {
                 chatBox.insertAdjacentHTML("beforeend", `
                     <div class="message-sent">${chat['message']}</div>
-                `);
-            } else {
-                chatBox.insertAdjacentHTML("beforeend", `
+                    `);
+                } else {
+                    chatBox.insertAdjacentHTML("beforeend", `
                     <div class="message-receive">${chat['message']}</div>
-                `);
-            }
-        });
+                    `);
+                }
+            });
     }
 }
 
 async function selectGroup(group_id, group_name) {
     currentGroupId = group_id;
-
+    
     const nochat = document.getElementById("nochats-container");
     const chat = document.getElementById("chats-container");
-
+    
     const chatUsername = document.getElementById("chat-username");
     const chatBox = document.getElementById("chat-box");
-
+    
     chatBox.innerHTML = '';
-
+    
     nochat.style.display = "none";
     chat.style.display = "flex";
-
+    
     chatUsername.textContent = group_name;
-
+    
     const chatsResponse = await fetch(`${url}/api/clubs/chats?club_id=${group_id}`, {
         method: 'GET',
     });
@@ -327,23 +319,55 @@ async function selectGroup(group_id, group_name) {
     if (chatsResponse.ok) {
         const chatsJson = await chatsResponse.json();
         const chats = chatsJson['data'];
-
+        
         chats.forEach(chat => {
             if (chat['sender_id'] === userObj['id']) {
                 chatBox.insertAdjacentHTML("beforeend", `
                     <div class="message-sent group-chat">
-                        <p class="sender-name">Me</p>
-                        <p>${chat['message']}</p>
+                    <p class="sender-name">Me</p>
+                    <p>${chat['message']}</p>
                     </div>
-                `);
-            } else {
+                    `);
+                } else {
                 chatBox.insertAdjacentHTML("beforeend", `
                     <div class="message-receive group-chat">
-                        <p class="sender-name">${chat['fullname']}</p>
-                        <p>${chat['message']}</p>
+                    <p class="sender-name">${chat['fullname']}</p>
+                    <p>${chat['message']}</p>
                     </div>
-                `);
+                    `);
             }
         });
     }
 }
+
+gif.addEventListener("mouseenter",() => {
+    gif.src = "./assets/logo-epic.gif";
+});
+
+gif.addEventListener("mouseleave",() => {
+    setTimeout(() => {
+        gif.src = "./assets/logo-epic-fun.png";
+    },2000)
+});
+
+
+const defaultEmoji = "😀";
+const emojis = ["😁","😂","🤣","😃","😄","😘"];
+let index = 0;
+
+emojiButton.addEventListener("mouseenter", () => {
+    const randomEoji = emojis[Math.floor(Math.random()* emojis.length)];
+    emojiButton.textContent = randomEoji;
+});
+
+emojiButton.addEventListener("mouseleave",() =>{
+    emojiButton.textContent = defaultEmoji;
+});
+
+sendButton.addEventListener("click", () => {
+    sendButton.classList.add("sending");
+
+    setTimeout(() => {
+        sendButton.classList.remove("sending");
+    }, 1000);
+});

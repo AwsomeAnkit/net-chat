@@ -11,13 +11,15 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #151212;
+    background-color: #000000;
     padding: 0 15px;
     height: 60px;
 }
 
 #hover-gif{
     cursor: pointer;
+    padding: 10px;
+    border-radius: 50px;
 }
 
 .center{
@@ -54,7 +56,16 @@ nav{
 }
 
 #emoji-picker-btn {
-    background-color: var(--background-color);
+    font-size: 18px;
+    border-radius: 15px;
+    transition: 0.5s;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+}
+
+#emoji-picker-btn:hover{
+    background-color: #0056b3;
 }
 
 .search-input{
@@ -259,11 +270,44 @@ nav{
 }
 
 .submit-button{
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: 17px;
+    padding: 9px 31px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+}
+
+.text{
+    position: absolute;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .submit-button:hover{
-    background-color: brown;
+    background-color: #0056b3;
+}
+
+.plane{
+    position: absolute;
+    left:-30px;
+    opacity: 0;
+    transition: transform 0.9s ease-out, opacity 0.3s ease-in-out;
+}
+
+.sending .plane{
+    transform: translateX(230px);
+    opacity: 1;
+}
+
+.sending .text{
+    opacity: 0;
 }
 
 .group-chat {
@@ -309,48 +353,3 @@ nav{
     gap: 5px;
     cursor: pointer;
 }
-
-/* 
-.sender>p{
-    color: red;
-}
-
-.sender-site{
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-}
-
-.options{
-    display: flex;
-    align-items: center;
-    position: relative;
-    gap: 10px;
-}
-/* .receiver>p
-{
-    color: white;
-    text-align: center;
-} 
-
-.sender{
-    padding: 15px;
-    background-color: green;
-    font-weight: bolder;
-    margin-right: 10px;
-    margin-top: 10px;
-    border: 1px solid black;
-    border-radius: 20px;
-}
-
-.receiver{
-    text-align: left;
-    padding: 10px;
-    background-color: green;
-    font-weight: bolder;
-    border-radius: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 1000px;
-}  */
