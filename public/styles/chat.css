@@ -111,6 +111,7 @@ nav{
     height: 100%;
     flex-direction: column;
     gap: 1px;
+    background-color: #040D21;
     border-right: 1px black solid;
     overflow-y: auto;
     position: relative;
@@ -122,19 +123,19 @@ nav{
     position: sticky;
     top: 0;
     left: 0;
-    background-color: var(--background-color);
+    background-color: #181818;
     padding: 4px 7px;
 }
 
 .chat-tab {
-    background-color: var(--card-background);
+    background-color: #ffffff;
     border-radius: 9px;
     padding: 2px;
     cursor: pointer;
 }
 
 .chat-tab-active {
-    background-color: #D3D3D3;
+    background-color: #323232;
 }
 
 #chats-tab {
@@ -155,17 +156,19 @@ nav{
     gap: 10px;
     padding: 10px 15px;
     border-radius: 12px;
-    background-color: var(--card-background);
+    background-color: #333333;
     margin: 7px;
+    cursor: pointer;
 }
 
 .chat-profile:hover {
-    background-color: var(--hover-effect);
+    background-color: #2d2d2d;
 }
 
 .chat-profile > p {
     font-size: 20px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 #nochats-container {
@@ -175,8 +178,12 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 215, 0, 0.5);
-    background-color: #1C1C1E;
+    background: rgb(22 22 22);
+}
+
+
+#nochats-container > p{
+    color: #ffffff;
 }
 
 #chats-container {
@@ -185,12 +192,13 @@ nav{
     height: 100%;
     display: none;
     flex-direction: column;
+    background-color: #7a00ff;
 }
 
 .Header{
     display: flex;
     align-items: center;
-    background-color: #00246B;
+    background-color: #3A86FF;
     justify-content: space-between;
     padding: 10px 20px;
     border-bottom: 2px solid black;
@@ -208,6 +216,11 @@ nav{
     font-size: large;
 }
 
+.proFile{
+    background-color: currentColor;
+    border-radius: 35px;
+}
+
 .Profile>img:hover{
     cursor: pointer;
 }
@@ -222,8 +235,7 @@ nav{
     flex-direction: column;
     flex: 1;
     overflow-y: auto;
-    background: rgb(196,223,230);
-    background-color: #2A2A2E;
+    background-color: #2C2C54;
 }
 
 .message-sent {
@@ -260,6 +272,7 @@ nav{
     width: 75vw;
     gap: 10px;
     margin: 10px 10px;
+    background-color: #7a00ff;
 }
 
 .input-field{
@@ -267,6 +280,8 @@ nav{
     padding: 10px;
     font-size: 16px;
     width: 500px;
+    background-color: #1F1F38;
+    color: #ffffff;
 }
 
 .submit-button{
@@ -292,6 +307,7 @@ nav{
 
 .submit-button:hover{
     background-color: #0056b3;
+    transition: 0.5s;
 }
 
 .plane{

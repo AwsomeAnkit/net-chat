@@ -98,12 +98,12 @@ $baseUrl = '/assets/';
         <div id="chats-container">
             <div class="Header">
                 <div class="Profile">
-                    <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                    <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px" class="proFile">
                     <p id="chat-username">Username</p>
                 </div>
-                <div class="Add">
+                <!-- <div class="Add">
                     <button type="button" class="btn-friend">Add Friend</button>
-                </div>
+                </div> -->
             </div>
             <div id="chat-box" class="chat-box">
                 <!-- dynamically load chats here -->
