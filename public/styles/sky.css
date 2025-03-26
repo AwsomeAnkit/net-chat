@@ -311,7 +311,7 @@ body {
 }
 
 .main-container.active .curveShaped2{
-    transform: rotate(-10deg) skewY(-20deg);
+    transform: rotate(-5deg) skewY(-26deg);
     transition-delay: 0.1s;
 }
 

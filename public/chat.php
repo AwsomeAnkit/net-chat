@@ -47,7 +47,7 @@ $baseUrl = '/assets/';
                                 <input id="input-group-name-create" placeholder="Group name">
                                 <div class="create-group-user-search">
                                     <input id="search-user-input-group-create" placeholder="Search user by name or email">
-                                    <button id="search-user-btn-group-create">Search</button>
+                                    <button id="search-user-btn-group-create" class="searchBtn">Search</button>
                                 </div>
                                 <div id="create-group-results" class="create-group-results">
                                     <!-- display search profiles -->

@@ -369,3 +369,7 @@ nav{
     gap: 5px;
     cursor: pointer;
 }
+
+.searchBtn{
+    border-radius: 10px;
+}
