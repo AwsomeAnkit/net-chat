@@ -9,12 +9,15 @@ $baseUrl = '/assets/';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Net-chat</title>
+    <link rel="shortcut icon" href="./assets/net-chat.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/chat.css">
     <!-- include bootstrap styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- include boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body onload="getMyChats()">
@@ -76,9 +79,10 @@ $baseUrl = '/assets/';
     </nav>
 
     <!-- displayed when user have not started chatting with anyone -->
-    <div id="nochat-page">
-        <p>Start chatting by searching a user</p>
-    </div>
+        <div id="nochat-page" class="page">
+            <p>Start chatting by searching a user</p>
+        </div>
+        
 
     <div id="chat-container" class="chat-page-container">
         <div class="chat-profiles">

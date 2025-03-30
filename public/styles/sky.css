@@ -145,7 +145,7 @@ body {
 
 .form-input input:focus ~ i,
 .form-input input:not(:placeholder-shown) ~ i{
-    /* top: -5px; */
+    left: calc(100% - 80px);
     color: #fff;
 }
 
