@@ -20,8 +20,6 @@ nav{
 #hover-gif{
     cursor: pointer;
     padding: 10px;
-    border-radius: 50px;
-    background-color: #2a2a2a;
 }
 
 .center{
@@ -121,16 +119,9 @@ nav{
 .page > p{
     color: rgba(0, 255, 255, 0.5);
     font-size: 45px;
-    transition: color 0.5s ease-in-out,text-shadow 0.5s ease-in-out, transform 0.3s ease-in-out;
     padding: 0 20px;
     cursor: default;
     flex-shrink: 0;
-}
-
-.page > p:hover{
-    color: #00ffff;
-    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-    transform: scale(1.2);
 }
 
 .chat-profiles {
@@ -214,6 +205,7 @@ nav{
 
 #nochats-container > p{
     color: #ffffff;
+    font-size: 40px;
 }
 
 #chats-container {
