@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assets/net-chat.png" type="image/x-icon">
     <title>Intro</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./styles/sky.css">
@@ -41,8 +42,8 @@
                 </div>
             </form>
             <div class="info-content login">
-                <h2 class="animation" style="--D:0">Welcome Back!</h2>
-                <p class="animation" style="--D:1">Welcome Back User!!</p>
+                <h2 class="animation" style="--D:0">Welcome User!</h2>
+                <p class="animation" style="--D:1">Welcome to Net-Chat</p>
             </div>
 
             <form id="register-form" class="form-container Register">
@@ -50,7 +51,7 @@
                 <div class="form-input animation">
                     <input type="text" id="register-name" placeholder=" " autocomplete="username">
                     <label for="register-name">Fullname</label>
-                    <i class='bx bx-user'></i>
+                    <i class='bx bx-file'></i>
                 </div>
                 <div class="form-input animation " style="--li:18;">
                     <input type="email" id="register-email" placeholder=" " autocomplete="username">
@@ -71,8 +72,8 @@
                 </div>
             </form>
             <div class="info-content Register">
-                <h2 class="animation" style="--li:17;">Welcome Back!</h2>
-                <p class="animation" style="--li:18;">Welcome Back User!!</p>
+                <h2 class="animation" style="--li:17;">Weclome User!</h2>
+                <p class="animation" style="--li:18;">Your journey starts here.<br> Let's build something amazing together!</p>
             </div>
         </div>
     </div>
