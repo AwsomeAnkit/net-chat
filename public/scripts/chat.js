@@ -43,8 +43,8 @@ chatsTabBtn.addEventListener("click", function () {
     currentChatTab = 0;
     
     chatsProfileContainer.innerHTML = '';
-    chatsTabBtn.style.backgroundColor = '#D3D3D3';
-    groupsTabBtn.style.backgroundColor = '#F7F9FC';
+    chatsTabBtn.style.backgroundColor = '#3a3aff';
+    groupsTabBtn.style.backgroundColor = '#282828';
     
     getMyChats();
 });
@@ -57,8 +57,8 @@ groupsTabBtn.addEventListener("click", function () {
     currentChatTab = 1;
     
     chatsProfileContainer.innerHTML = '';
-    groupsTabBtn.style.backgroundColor = '#D3D3D3';
-    chatsTabBtn.style.backgroundColor = '#F7F9FC';
+    groupsTabBtn.style.backgroundColor = '#3a3aff';
+    chatsTabBtn.style.backgroundColor = '#282828';
     
     getMyGroups();
 });
